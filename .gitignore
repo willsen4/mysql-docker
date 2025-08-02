@@ -1,0 +1,3 @@
+# Ignore all files
+mysql-docker\index.sh
+mysql-docker\senhas
