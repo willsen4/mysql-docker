@@ -3,10 +3,10 @@ services:
     image: mysql/mysql-server:8.0 # Ou 'latest' se preferir a versão mais recente
     container_name: mysql-app
     environment:
-      MYSQL_ROOT_PASSWORD: Infra-2025 # Altere para sua senha forte
+      MYSQL_ROOT_PASSWORD: sua_senha # Altere para sua senha forte
       MYSQL_DATABASE: teste_db # Opcional: cria um banco de dados inicial
-      MYSQL_USER: adminag # Opcional: cria um usuário inicial
-      MYSQL_PASSWORD: Infra2025 # Opcional: senha para o usuário inicial
+      MYSQL_USER: seu_user # Opcional: cria um usuário inicial
+      MYSQL_PASSWORD: sua_senha # Opcional: senha para o usuário inicial
     ports:
       - "3306:3306"
     volumes:
