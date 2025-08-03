@@ -4,7 +4,7 @@
 ### Usando Docker Compose (Recomendado para projetos e ambientes de desenvolvimento) O Docker Compose permite definir e executar aplicativos multi-container Docker usando um arquivo YAML. É ideal para gerenciar o MySQL junto com outras aplicações (como um servidor web ou backend).
 
 Crie um diretório para o seu projeto
-```
+```Bash
 kdir mysql-docker
 cd mysql-docker
 ```
