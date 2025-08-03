@@ -1,8 +1,8 @@
 #Comandos úteis
-Acessa a pasta
+#Acessa a pasta
 cd mysql-docker
 
-Logs
+#Logs
 docker logs mysql-app
 
 #Remover o conteiner
