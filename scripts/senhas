@@ -1,0 +1,4 @@
+MYSQL_ROOT_PASSWORD: Infra-2025
+MYSQL_DATABASE: teste_db # Opcional: cria um banco de dados inicial
+MYSQL_USER: adminag # Opcional: cria um usuário inicial
+MYSQL_PASSWORD: Infra2025 # Opcional: senha para o usuário inicial
