@@ -1,35 +1,33 @@
-"# mysql-docker" 
-Instalando MySQL com Docker
-Usando Docker Compose (Recomendado para projetos e ambientes de desenvolvimento)
-O Docker Compose permite definir e executar aplicativos multi-container Docker usando um arquivo YAML. 
-É ideal para gerenciar o MySQL junto com outras aplicações (como um servidor web ou backend).
+
+# Instalando MySQL com Docker
+
+### Usando Docker Compose (Recomendado para projetos e ambientes de desenvolvimento) O Docker Compose permite definir e executar aplicativos multi-container Docker usando um arquivo YAML. É ideal para gerenciar o MySQL junto com outras aplicações (como um servidor web ou backend).
 
 Crie um diretório para o seu projeto
-Bash
-`kdir mysql-docker`
-`cd mysql-docker`
-
+```Bash
+kdir mysql-docker
+cd mysql-docker
+```
 Crie um arquivo docker-compose.yml:
-Bash
+```Bash
 nano docker-compose.yml
-
-Cole o seguinte conteúdo:
-YAML
+```
+Cole o conteúdo YAML
 
 Suba os serviços com Docker Compose:
-Bash
+```Bash
 docker compose up -d
-
+````
 Isso criará e iniciará o container MySQL em segundo plano.
 
 Verifique o status dos serviços:
-Bash
+````Bash
 docker compose ps
-
+````
 Acessar o shell do contêiner MySQL
-Bash
+````Bash
 docker exec -it mysql-app mysql -uroot -p
-
+````
 Será solicitada a senha que você definiu (sua_senha_segura).
 Conectando-se ao MySQL
 Após a instalação, você pode se conectar ao seu servidor MySQL usando um cliente MySQL, 
@@ -42,4 +40,4 @@ Porta: 3306
 
 Usuário: root (ou o usuário que você criou via Docker Compose)
 
-#Senha: A senha que você definiu (sua_senha_segura ou senha_do_usuario).
+Senha: A senha que você definiu (sua_senha_segura ou senha_do_usuario).
