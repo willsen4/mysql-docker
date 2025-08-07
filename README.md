@@ -1,6 +1,8 @@
 
 # Instalando MySQL com Docker
 
+## O MySQL é um sistema de gerenciamento de banco de dados relacional de código aberto, amplamente utilizado para armazenar, organizar e recuperar dados. Ele é conhecido por sua confiabilidade, desempenho e facilidade de uso, sendo uma escolha popular para diversas aplicações web e sistemas integrados. 
+
 ### Usando Docker Compose (Recomendado para projetos e ambientes de desenvolvimento) O Docker Compose permite definir e executar aplicativos multi-container Docker usando um arquivo YAML. É ideal para gerenciar o MySQL junto com outras aplicações (como um servidor web ou backend).
 -----------
 Crie um diretório para o seu projeto
