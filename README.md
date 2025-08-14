@@ -8,8 +8,10 @@
 Crie um diretório para o seu projeto
 ```Bash
 mkdir mysql-docker
+````
+````Bash
 cd mysql-docker
-```
+````
 -----------
 Crie um arquivo docker-compose.yml:
 ```Bash
