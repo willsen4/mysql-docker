@@ -1,36 +1,51 @@
--- Lista os usuários criados no MySQL (localhost são usuários com permissão local / % são usuários permissões remotas)
+-- Acessar o Shell do contêiner MySQL 
+Bash
+docker exec -it mysql-app mysql -uroot -p
+
+-- Cria o usuário 'seu_usuario' com a senha 'sua_senha'
+CREATE USER 'seu_usuario'@'%' IDENTIFIED BY 'sua_senha'; -- Cria usuários com permissões remotas (%)
+CREATE USER 'seu_usuario'@'localhost' IDENTIFIED BY 'sua_senha'; -- cria usuários com permissão local (localhost)
+
+-- Cria/atualiza para localhost com a mesma senha simples
+CREATE USER IF NOT EXISTS 'seu_usuario'@'localhost' IDENTIFIED BY 'sua_senha';
+
+-- Lista os usuários criados no MySQL
 SELECT user, host FROM mysql.user;
 
 -- Alterar senha
 SQL
-ALTER USER 'seu_user'@'%' IDENTIFIED BY 'SUA_NOVA_SENHA_FORTE';
-ALTER USER 'seu_user'@'localhost' IDENTIFIED BY 'SUA_NOVA_SENHA_FORTE'; -- Mantenha se você criou para localhost
-FLUSH PRIVILEGES;
-EXIT;
----------------------------------------------
+ALTER USER 'seu_usuario'@'%' IDENTIFIED BY 'SUA_NOVA_SENHA_FORTE';
+ALTER USER 'seu_usuario'@'localhost' IDENTIFIED BY 'SUA_NOVA_SENHA_FORTE'; -- 
 
--- Comando para criar usuário e senha no MySQL
--- 1. Garante que o banco de dados 'nome_do_banco' exista
-CREATE DATABASE IF NOT EXISTS nome_do_banco;
-
--- 2. Remove todas as instâncias existentes do usuário 'seu_usuario' para evitar conflitos
+-- Remove todas as instâncias existentes do usuário 'seu_usuario' para evitar conflitos
 DROP USER IF EXISTS 'seu_usuario'@'localhost';
 DROP USER IF EXISTS 'seu_usuario'@'%';
 -- Se você viu um IP específico no erro (ex: ip_da_network), adicione:
--- DROP USER IF EXISTS 'seu_usuario'@'ip_da_network';
+DROP USER IF EXISTS 'seu_usuario'@'ip_da_network';
 
--- 3. Cria o usuário 'seu_usuario' com a NOVA SENHA SIMPLES e permite conexão de qualquer host ('%')
-CREATE USER 'seu_usuario'@'%' IDENTIFIED BY 'sua_senha';
+-- Garante que o banco de dados 'nome_do_banco' exista
+CREATE DATABASE IF NOT EXISTS nome_do_banco;
 
--- 4. Concede todas as permissões no banco de dados 'nome_do_banco' para este usuário
+
+
+
+
+-- Concede todas as permissões no banco de dados 'nome_do_banco' para este usuário
 GRANT ALL PRIVILEGES ON seu_banco.* TO 'seu_usuario'@'%';
-
--- 5. Opcional, para garantir: cria/atualiza para localhost com a mesma senha simples
-CREATE USER IF NOT EXISTS 'seu_usuario'@'localhost' IDENTIFIED BY 'teampass123';
 GRANT ALL PRIVILEGES ON seu_banco.* TO 'seu_usuario'@'localhost';
 
--- 6. IMPORTANTE: Recarrega as tabelas de privilégios para que as alterações entrem em vigor imediatamente.
+
+
+-- IMPORTANTE: Recarrega as tabelas de privilégios para que as alterações entrem em vigor imediatamente.
 FLUSH PRIVILEGES;
 
--- 7. Saia do cliente MySQL.
+-- Saia do cliente MySQL.
 EXIT;
+
+-- Exemplo criação de banco para GLPI
+CREATE DATABASE glpi_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'glpi_user'@'%' IDENTIFIED BY 'sua_senha_forte';
+GRANT ALL PRIVILEGES ON glpi_db.* TO 'glpi_user'@'%';
+-- Permitir que os usuarios do glpi acessem a tabela timezone do mySQL
+GRANT SELECT ON mysql.time_zone_name TO 'glpi_user'@'%';
+FLUSH PRIVILEGES;
