@@ -34,6 +34,9 @@ CREATE DATABASE IF NOT EXISTS nome_do_banco;
 -- Lista todos os bancos de dados
 SHOW DATABASES;
 
+-- Deletar Banco de dados
+DROP DATABASE nome_do_banco;
+
 -- Concede todas as permissões no banco de dados 'nome_do_banco' para este usuário
 GRANT ALL PRIVILEGES ON nome_do_banco.* TO 'seu_usuario'@'%';
 GRANT ALL PRIVILEGES ON nome_do_banco.* TO 'seu_usuario'@'localhost';
