@@ -2,6 +2,7 @@
 Bash
 docker exec -it mysql-app mysql -uroot -p
 
+SQL
 --USUÁRIOS E SENHAS
 -- Cria o usuário 'seu_usuario' com a senha 'sua_senha'
 CREATE USER 'seu_usuario'@'%' IDENTIFIED BY 'sua_senha'; -- Cria usuários com permissões remotas (%)
@@ -14,7 +15,6 @@ CREATE USER IF NOT EXISTS 'seu_usuario'@'localhost' IDENTIFIED BY 'sua_senha';
 SELECT user, host FROM mysql.user;
 
 -- Alterar senha
-SQL
 ALTER USER 'seu_usuario'@'%' IDENTIFIED BY 'SUA_NOVA_SENHA_FORTE';
 ALTER USER 'seu_usuario'@'localhost' IDENTIFIED BY 'SUA_NOVA_SENHA_FORTE'; -- 
 
