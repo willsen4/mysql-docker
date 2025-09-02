@@ -19,6 +19,34 @@ nano docker-compose.yml
 ```
 -------------
 ### Cole o conteúdo YAML
+````Yml
+services:
+  mysql:
+    image: mysql/mysql-server:8.0 # Ou 'latest' se preferir a versão mais recente
+    container_name: mysql-app
+    environment:
+      MYSQL_ROOT_PASSWORD: sua_senha # Altere para sua senha forte
+      MYSQL_DATABASE: teste_db # Opcional: cria um banco de dados inicial
+      MYSQL_USER: seu_user # Opcional: cria um usuário inicial
+      MYSQL_PASSWORD: sua_senha # Opcional: senha para o usuário inicial
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql # Persiste os dados em um volume nomeado
+    restart: always # Garante que o container reinicie automaticamente
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      timeout: 5s
+      retries: 5
+    networks:
+      - mysql_network # Conecta o serviço 'mysql' à rede 'mysql_network'
+volumes:
+  mysql_data: # Define o volume nomeado para persistência dos dados
+networks:
+  mysql_network: # Nome interno da rede no Compose
+    name: mysql_network # <--- ESTA LINHA GARANTE O NOME EXATO DA REDE
+    driver: bridge # O tipo de rede padrão para redes personalizadas
+````
 ### Salve e feche o arquivo. (Em nano, pressione Ctrl+X, depois Y e Enter).
 --------------
 Suba os serviços com Docker Compose:
